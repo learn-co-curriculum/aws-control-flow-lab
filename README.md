@@ -1,4 +1,4 @@
-# Review: Control Flow Lab
+# Control Flow Lab
 
 ## Learning Goals
 
