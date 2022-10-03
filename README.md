@@ -16,36 +16,29 @@ Scuber's drivers charge their passengers a variable amount based on how far
 they need to travel. Modify the `index.js` file to make sure that Scuber's drivers
 are properly telling their passengers how much the ride will cost.
 
-## Read the Tests
+## Read the Tests 
 
-We know that you do not have much experience with testing, so that is why it is
-very important for you to read the instructions in this and every lab. That
-being said, reading the tests can often provide important clues on how to
-complete a lab. Let's take a look at the first test for this lab together:
+As always, this lab includes tests for you to check your work as you go. 
+First, install the required dependencies with `npm i` and run an initial test with
+`npm test` to see what tasks you need to accomplish. 
 
-```js
-describe('index.js', function () {
-  describe('scuberGreetingForFeet()', function () {
-    it('gives customers a free sample if the ride is less than or equal to 400 feet', function () {
-      expect(scuberGreetingForFeet(199)).to.equal('This one is on me!');
-    });
+After running the `npm test` command in your terminal, you should see all of them will
+fail. This is expected, of course, since we haven't written anything yet. Let's 
+look at the first test together. It should say: 
 
-    // tests continue...
-  });
-});
+```sh
+1) index.js
+      scuberGreetingForFeet()
+        gives customers a free sample if the ride is less than or equal to 400 feet:
+        AssertionError: expected undefined to equal 'This one is on me!'
 ```
 
-Okay, so all of the fancy `describe` words are just there to organize the
-requirements, and provide a description for what each function should do. By
-reading the text inside of the `describe` words, we can see that there is some
-function that should give customers a free sample, where the first 400 feet are
-free. Then in the next line we see a function called `scuberGreetingForFeet`
-being executed with `199` passed through as an argument to the function.
-Executing the `scuberGreetingForFeet` function with the argument should return
-`"This one is on me!"`.
+We can see that this test is for the `scuberGreetingForFeet()` function. It says that
+_if_ a ride is less than or equal to 400 feet, the function should return the string
+`'This one is on me!'`. 
 
-We will tackle the details of function writing in depth in an upcoming lab. For 
-now, briefly, a function declaration is written like so:
+We will tackle the details of functions in depth later on. For now, here is a quick
+example of how functions are declared: 
 
 ```js
 function addFive(someNumber) {
@@ -60,54 +53,58 @@ function addFive(someNumber) {
   //at the end, if I want my function to return something, I need to state it:
   return result
 }
-
-//once our function is declared, we can call addFive, passing in values 
-//as arguments:
-
-addFive(10);
-//=> 15
-
-addFive(20);
-//=> 25
-
-addFive(-5);
-//=> undefined
-
-addFive(addFive(5));
-//=> 15!! In this case, the return value of addFive(5), 10, is passed in 
-//as the argument to the outer addFive, returning 15
 ```
 
-So, looking back at our test example, `scuberGreetingForFeet(199)` is calling
-the function `scuberGreetingForFeet`, and passing in the value `199` as the
-argument.  When we write this function, we need to write the logic inside the
-curly braces to pass our tests and return the result:
+Now that we've briefly learned about functions, let's open the `index.js` file. 
+You'll see there are three functions declared for you. Let's focus on `scuberGreetingForFeet()`
+to pass the first test. We can see that the function has a variable inside its
+parentheses `(feet)`. This is called a parameter, we'll learn more about it in
+the future. 
+
+For now, all we need to know is that is the variable we will compare against in
+our statements. As an example, let's pass the first test together. It asked us
+to say `'This one is on me!'` _if_ the ride is less than 400 feet. 
+
+Or, in other words: 
 
 ```js
-function scuberGreetingForFeet(someValue) {
-  //this is where we can use conditionals given our argument, someValue
-  //don't forget to return whatever the result is!
+function scuberGreetingForFeet(feet){
+  if(feet < 400) {
+    // ... say 'This one is on me!'
+  }
 }
 ```
 
-The big clue from reading the example test above is that the tests in the
-`indexTest.js` file are calling the functions that we write inside the
-`index.js` file. These tests pass arguments to our function. When this test
-passes an argument of `199` to our function, the `scuberGreetingForFeet`
-function should return `"This one is on me!"`. That makes sense, considering
-the text in the `describe` and `it` functions say that the first 400 feet
-should be free. That `199` must be indicating the distance in feet of the
-requested ride.
+How do we say 'This one is on me!'? In the function example given earlier, we
+learned about the `return` statement. Let's do something similar. Above the `if`
+statement, declare a variable called `driverGreeting` with no value. We will 
+set the value accordingly inside the `if...else`'s. Don't forget to return
+the variable below the `if...else`. 
 
-So reading tests is essentially like reading the instructions. It's something
-we may have avoided for much of our lives, but when it comes to programming,
-tests fill in the picture of the goal we are trying to accomplish. They run
-mini-experiments on our code and help us better understand our code and the
-problem we are solving.
+
+```js
+function scuberGreetingForFeet(feet){
+  let driverGreeting
+
+  if(feet < 400) {
+    driverGreeting = 'This one is on me!';
+  }
+
+  return driverGreeting
+}
+```
+
+When you run your test now, the first one should pass! 
 
 ## Instructions
 
-There are three functions that have been declared for you. You will need to fill in the following code:
+As you saw, there are three functions that have been declared for you. Again, we will 
+learn about functions in more detail later on, so for now all you need to focus on is 
+writing `if...else`, ternary, and `switch` statements within these given functions.
+
+Below is a brief summary of what each function is expected to do and which selection
+flow you should use. Remember to also read the test outputs when running `npm test` 
+to find out what each function should do exactly for you to pass them.
 
 * `scuberGreetingForFeet()` — Use `if` and `else if` statements to return the
 correct greeting based on the distance the passenger desires to travel.
@@ -143,3 +140,10 @@ That leaves us with `1 < 4`, which the JavaScript engine correctly evaluates to
 through the assignment.
 
 Good luck!
+
+## Submission 
+
+Once all your tests pass, submit your assignment on Canvas. 
+
+> Don't quite remember how to submit an assignment? Refer back to the very first 
+> assignment's submission instructions.
